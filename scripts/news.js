@@ -15,7 +15,7 @@ $("#disk").click(function(){
 	//	alert($("#zone_saisie").val());
 		recherches.push(donneeEntree);
 		//ajouter l'element aux recherches stockées
-	$("#recherches-stockees").append("<p class="titre-recherche"><label>chaîne de caractères saisie</label><img src="images/croix30.jpg" class="icone-croix"/></p>")
+	$("#recherches-stockees").append("<p>yes </p>");
 	}
 	
 	
