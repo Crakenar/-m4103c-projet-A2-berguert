@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>My News</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	 <link rel="shortcut icon" type="image/x-icon" href="favicon-js.ico">
+	<link rel="stylesheet" type="text/css" media="screen" href="news.css">
+</head>
+<body onload="init();">
+	<header>
+		<img id="banniere" src="img/job.png"/>
+	</header>
+	
+	<div id="recherches">
+		<h3 class="titre"> recherches stockées</h3>
+		<div id="recherches-stockees">
+		</div>
+
+		<h3 class="titre">nouvelle recherche</h3>
+		<div id="nouvelle-recherche">
+			<input type="text" name="zone_saisie" id="zone_saisie"/>
+			<img class="icone-disk" src="img/disk30.jpg" onclick="ajouter_recherche()" />
+			<BR/>
+			<input type="button" value="OK" onclick="rechercher_nouvelles()"/>
+		</div>
+	</div>
+
+	<div id="zone-centrale">
+		<div id="resultats-container">
+			<h3 class="titre">résultats</h3>
+			<div id="wait"></div>
+			<div id="resultats"></div>
+		</div>
+	</div>
+
+	<!-- Inclusion des librairies jQuery & Scripts JS -->
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script src="scripts/jquery.cookie.js"></script>
+
+	<script src="scripts/util.js"></script>
+	<script src="scripts/news.js"></script>
+
+</body>
+</html>
