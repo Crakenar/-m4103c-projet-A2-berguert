@@ -8,6 +8,7 @@ var recherche_courante_news = [];
 
 function ajouter_recherche() {
 	//TODO ...
+	$("#resultats").val("");
 }
 
 
