@@ -9,8 +9,14 @@ var recherche_courante_news = [];
 //on vide la zone d'affichage
 $("#disk").click(function ajouter_recherche() {
 	//recuperer la chaine de carachtere
-	alert($("#zone_saisie").val());
-	recherches.push($("#zone_saisie").val());
+	//verifier si dans recherches, il y a la meme recherche
+	if(recherches.indexOf($("#zone_saisie").val()) == -1){
+		alert($("#zone_saisie").val());
+		recherches.push($("#zone_saisie").val());
+	}else{
+		alert("deja prsent");
+	}
+	
 });
 
 
