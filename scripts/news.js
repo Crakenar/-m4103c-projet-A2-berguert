@@ -5,13 +5,11 @@ var recherche_courante;
 // Tableau d'objets de type resultats (avec titre, date et url)
 var recherche_courante_news = [];
 
-//si clic sur le bouton ok alors nouvelle recherche
+//si clic sur l'image disk alors ajout chaine au tableau recherches[]
 //on vide la zone d'affichage
-$("bouton_recherche").click(function ajouter_recherche() {
-	$("#resultats").val("");
-	alert("yes");
-	//recuperer la valeur de la recherche et l'envoyer en parametre du lien pour le php
-	$.get("https://carl-vincent.fr/search-internships.php?data=",$("#resultat".val()));
+$("disk").click(function ajouter_recherche() {
+	//recuperer la chaine de carachtere
+	alert($("#zone_saisie").val());
 });
 
 
