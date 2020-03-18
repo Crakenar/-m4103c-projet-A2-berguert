@@ -10,6 +10,7 @@ var recherche_courante_news = [];
 $("disk").click(function ajouter_recherche() {
 	//recuperer la chaine de carachtere
 	alert($("#zone_saisie").val());
+	recherches.push($("#zone_saisie").val());
 });
 
 
