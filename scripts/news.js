@@ -6,16 +6,18 @@ var recherche_courante;
 var recherche_courante_news = [];
 
 //si clic sur l'image disk alors ajout chaine au tableau recherches[]
-//on vide la zone d'affichage
-$("#disk").click(function ajouter_recherche() {
+//function ajouter_recherche()
+$("#disk").click(function(){
 	//recuperer la chaine de carachtere
 	//verifier si dans recherches, il y a la meme recherche
-	if(recherches.indexOf($("#zone_saisie").val()) == -1){
-		alert($("#zone_saisie").val());
-		recherches.push($("#zone_saisie").val());
-	}else{
-		alert("deja prsent");
+	const donneeEntree = $("#zone_saisie").val();
+	if(recherches.indexOf(donneeEntree) == -1){
+	//	alert($("#zone_saisie").val());
+		recherches.push(donneeEntree);
+		//ajouter l'element aux recherches stockées
+	$("#recherches-stockees").append("<p class="titre-recherche"><label>chaîne de caractères saisie</label><img src="images/croix30.jpg" class="icone-croix"/></p>")
 	}
+	
 	
 });
 
