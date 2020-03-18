@@ -7,7 +7,7 @@ var recherche_courante_news = [];
 
 //si clic sur l'image disk alors ajout chaine au tableau recherches[]
 //on vide la zone d'affichage
-$("disk").click(function ajouter_recherche() {
+$("#disk").click(function ajouter_recherche() {
 	//recuperer la chaine de carachtere
 	alert($("#zone_saisie").val());
 	recherches.push($("#zone_saisie").val());
