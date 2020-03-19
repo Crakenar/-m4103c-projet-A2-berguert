@@ -93,15 +93,12 @@ function init() {
 
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
-	if(recherche_courante != NaN){
-		alert(recherche_courante);
-		$.get("https://carl-vincent.fr/search-internships.php?data="+recherche_courante,maj_resultats);
-	}else{
+
 		
 		const data = $("#zone_saisie").val();
 		console.log(data);
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
-	}
+	
 }
 
 
