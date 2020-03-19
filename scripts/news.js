@@ -97,8 +97,9 @@ function rechercher_nouvelles() {
 		alert(recherche_courante);
 		$.get("https://carl-vincent.fr/search-internships.php?data="+recherche_courante,maj_resultats);
 	}else{
-		console.log(data);
+		
 		const data = $("#zone_saisie").val();
+		console.log(data);
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
 	}
 }
