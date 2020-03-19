@@ -124,7 +124,7 @@ function maj_resultats(res) {
 
 function sauver_nouvelle(elt) {
 	//parentElement => titre
-	console.log(elt.parent());
+	console.log($(elt).parent());
 		console.log(elt);
 	//$(elt).firstChild.attr("src","");
 	//$(elt).attr("src","img/disk15.jpg");
