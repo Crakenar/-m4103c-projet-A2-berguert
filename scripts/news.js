@@ -93,7 +93,8 @@ function init() {
 
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
-
+//on nettoye la zone de resultat pour eviter d'afficher encore et encore
+	$("#resultats").val("");
 		//image => display = block
 		$("#wait").css("display","block");
 		const data = $("#zone_saisie").val();
