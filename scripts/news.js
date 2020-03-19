@@ -119,6 +119,8 @@ function maj_resultats(res) {
 	
 }
 
+//manque : creer un objet à envoyer 
+//delete dans recherche_courante_news	
 
 function sauver_nouvelle(elt) {
 	console.log(elt);
