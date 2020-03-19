@@ -122,7 +122,8 @@ function maj_resultats(res) {
 
 
 function sauver_nouvelle(elt) {
-	//TODO ...
+	console.log(elt);
+	
 }
 
 
