@@ -123,11 +123,18 @@ function maj_resultats(res) {
 
 function sauver_nouvelle(elt) {
 	console.log(elt);
+	$(this).attr("src","img/disk15.jpg");
+	$(this).attr("onclick","supprimer_nouvelle(this)");
+	if(indexOfResultat(e,recherche_courante_news) == -1){
+		recherche_courante_news.push(e);
+		localStorage.setItem("recherches_courante_news",JSON.stringify(recherches_courante_news));
+	}
 	
 }
 
 
 function supprimer_nouvelle(elt) {
-	//TODO ...
+	$(this).attr("src","img/horloge15.jpg");
+	$(this).attr("onclick","sauver_nouvelle(this)");
 }
 
