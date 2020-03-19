@@ -107,9 +107,9 @@ function maj_resultats(res) {
 	//TODO ...
 	console.log(res);
 	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
-	$(res).each(function(index,value){
-		$("#resultats").prepend('<p ><label>'+value +'</label></p>');
-	})
+	$(res).each(function(){
+		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+res.url+' target="_blank">'+res.titre+'</a><span class="date_news"> '+res.date+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
+	});
 	
 	
 }
