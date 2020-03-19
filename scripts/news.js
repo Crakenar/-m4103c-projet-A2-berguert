@@ -5,40 +5,97 @@ var recherche_courante;
 // Tableau d'objets de type resultats (avec titre, date et url)
 var recherche_courante_news = [];
 
+/*class Paragraphe{
+	constructor(id,value){
+		this.id = id;
+		this.value = value;
+	}
+}*/
+
+
+/*1.1 */	
 //si clic sur l'image disk alors ajout chaine au tableau recherches[]
 //function ajouter_recherche()
-$("#disk").click(function(){
+function ajouter_recherche(){
 	//recuperer la chaine de carachtere
 	//verifier si dans recherches, il y a la meme recherche
 	const donneeEntree = $("#zone_saisie").val();
 	if(recherches.indexOf(donneeEntree) == -1){
-	//	alert($("#zone_saisie").val());
 		recherches.push(donneeEntree);
 		//ajouter l'element aux recherches stockées
-	$("#recherches-stockees").append('<p class="titre-recherche"><label>donneeEntree</label><img src="images/croix30.jpg" class="icone-croix"/></p>');
+		$("#recherches-stockees").prepend('<p class="titre-recherche" ><label onclick=selectionner_recherche(this)>'+donneeEntree+'</label><img src="images/croix30.jpg" class="icone-croix " onclick="supprimer_recherche(this)"/></p>');
+		//sauvegarde dans sessionStorage(plus de place que cookie) pour conserver les recherches deja effectuées
+		localStorage.setItem("recherches",JSON.stringify(recherches));
 	}
-	
-	
-});
+	//si clic sur le label => selectionner_recherche(this)
+	//si clic sur croix => supprimer_recherche(this)
+}
 
 
 function supprimer_recherche(elt) {
-	//TODO ...
+	//supprimer l'element p dans recherches-stockees
+	$(elt).parent().remove();
+
+	
+	//	localStorage.clear(); == localStorage.removeItem("recherches");
+	//supprimer la recherche du tableau recherches[]
+	const indexSupprimer = recherches.indexOf($(elt).parent().parent().val());
+	recherches.splice(indexSupprimer);
+	//supprimer dans localstorage aussi
+	//localStorage.removeItem(this);
+	//c'est moche A REFAIRE
+	localStorage.setItem("recherches",JSON.stringify(recherches));
 }
 
 
 function selectionner_recherche(elt) {
-	//TODO ...
+	$("#zone_saisie").val("");
+	//jquery ??????
+	$("#zone_saisie").val(elt.innerText); 
+	recherche_courante = elt.innerText;
+}
+
+/*1.2 */
+
+
+function toJSON(){
+	let obj = { 
+	"recherches":[],
+	"recherches-stockees":$("#zone_saisie").val()};
+	//pour tout les labels de recherches-stockees
+	$("#recherches-stockees").each(function()
+	{
+		obj.recherches.push(
+			{"id": $(this).attr('id'), "val":$(this).val() });
+		
+	});
+	return JSON.stringify(obj);
 }
 
 
+
 function init() {
-	//TODO ...
+	//recuperer les données du stockage local
+	let obj_json = localStorage.getItem("recherches");
+	let obj = JSON.parse(obj_json);
+	console.log(obj);
+	if(obj != ""){
+		$(obj).each(function(index,value){
+			recherches.push(value);
+			$("#recherches-stockees").prepend('<p class="titre-recherche" ><label onclick=selectionner_recherche(this)>'+value +'</label><img src="images/croix30.jpg" class="icone-croix " onclick="supprimer_recherche(this)"/></p>');
+		});
+	}
+	//on remplit la partie recherches-stockées de ces données
+	
+
 }
 
 
 function rechercher_nouvelles() {
-	//TODO ...
+	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
+	if(recherche_courante != ""){
+		$.get("https://carl-vincent.fr/search-internships.php?data=",recherche_courante);
+	}
 }
 
 
