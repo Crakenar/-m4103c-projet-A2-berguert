@@ -126,8 +126,8 @@ function sauver_nouvelle(elt) {
 	//parentElement => titre
 	console.log($(elt).parent());
 	let obj = {
-		"titre" : $(elt).parent().find("<a>").Text,
-		"date" : $(elt).parent(),
+		"titre" : $(elt).parent().find("a").Text,
+		"date" : $(elt).parent().find("span"),
 		"url" : $(elt).parent().attr('href')
 	}
 		console.log(obj);
