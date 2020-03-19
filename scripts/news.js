@@ -138,7 +138,7 @@ function sauver_nouvelle(elt) {
 function supprimer_nouvelle(elt) {
 	$(this).attr("src","img/horloge15.jpg");
 	$(this).attr("onclick","sauver_nouvelle()");
-	if(indexOfResultat(e,recherche_courante_news) != -1){
+	if(indexOfResultat(elt,recherche_courante_news) != -1){
 		recherche_courante_news.splice(indexOfResultat(elt,recherche_courante_news));
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherches_courante_news));
 	}
