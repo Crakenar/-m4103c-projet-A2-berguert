@@ -109,7 +109,7 @@ function rechercher_nouvelles() {
 function maj_resultats(res) {
 	$("#wait").css("display","none");
 	console.log(res);
-	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
+	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
 		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 		' target="_blank">'+decodeHtmlEntities(value.titre)+
@@ -125,7 +125,12 @@ function maj_resultats(res) {
 function sauver_nouvelle(elt) {
 	//parentElement => titre
 	console.log($(elt).parent());
-		console.log(elt);
+	let ojb = {
+		"titre" : $(elt).parent().html,
+		"date" : $(elt).parent().$(".date_news"),
+		"url" : $(elt).parent().attr('href')
+	}
+		console.log(obj);
 	//$(elt).firstChild.attr("src","");
 	//$(elt).attr("src","img/disk15.jpg");
 	$(elt).html("<img src = img/disk15.jpg />");
