@@ -136,9 +136,9 @@ function sauver_nouvelle(elt) {
 
 
 function supprimer_nouvelle(elt) {
-	$(elt).attr("src","");
-	$(elt).attr("src","img/horloge15.jpg");
-	//this.innerHTML("<img src = img/horloge15.jpg");
+	//$(elt).attr("src","");
+	//$(elt).attr("src","img/horloge15.jpg");
+	$(elt).html("<img src = img/horloge15.jpg />");
 	$(elt).attr("onclick","sauver_nouvelle(this)");
 	if(indexOfResultat(elt,recherche_courante_news) != -1){
 		recherche_courante_news.splice(indexOfResultat(elt,recherche_courante_news));
