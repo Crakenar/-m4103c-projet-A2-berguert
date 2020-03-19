@@ -136,7 +136,7 @@ function sauver_nouvelle(elt) {
 	$(elt).html("<img src = img/disk15.jpg />");
 	$(elt).attr("onclick","supprimer_nouvelle(this)");
 	//creer l'objet il faut
-	if(indexOfResultat(obj,recherche_courante_news) == -1){
+	if(indexOfResultat(recherche_courante_news,obj) == -1){
 		recherche_courante_news.push(obj);
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
 	}
@@ -154,7 +154,7 @@ function supprimer_nouvelle(elt) {
 	//$(elt).attr("src","img/horloge15.jpg");
 	$(elt).html("<img src = img/horloge15.jpg />");
 	$(elt).attr("onclick","sauver_nouvelle(this)");
-	if(indexOfResultat(obj,recherche_courante_news) != -1){
+	if(indexOfResultat(recherche_courante_news,obj) != -1){
 		console.log("on enleve");
 		recherche_courante_news.splice(indexOfResultat(obj,recherche_courante_news));
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
