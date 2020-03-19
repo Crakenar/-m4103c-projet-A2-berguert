@@ -125,7 +125,7 @@ function maj_resultats(res) {
 function sauver_nouvelle(elt) {
 	//parentElement => titre
 	console.log($(elt).parent());
-	let ojb = {
+	let obj = {
 		"titre" : $(elt).parent().html,
 		"date" : $(elt).parent(),
 		"url" : $(elt).parent().attr('href')
