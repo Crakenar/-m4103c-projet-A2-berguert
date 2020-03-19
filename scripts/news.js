@@ -94,7 +94,7 @@ function init() {
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 	if(recherche_courante != ""){
-		alert("recherchernouvelle");
+		alert(recherche_courante);
 		$.get("https://carl-vincent.fr/search-internships.php?data="+recherche_courante,maj_resultats);
 	}
 }
