@@ -136,8 +136,8 @@ function sauver_nouvelle(elt) {
 	$(elt).html("<img src = img/disk15.jpg />");
 	$(elt).attr("onclick","supprimer_nouvelle(this)");
 	//creer l'objet il faut
-	if(indexOfResultat(elt,recherche_courante_news) == -1){
-		recherche_courante_news.push(elt);
+	if(indexOfResultat(obj,recherche_courante_news) == -1){
+		recherche_courante_news.push(obj);
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
 	}
 	
