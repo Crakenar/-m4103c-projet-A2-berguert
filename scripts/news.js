@@ -125,9 +125,10 @@ function maj_resultats(res) {
 
 function sauver_nouvelle(elt) {
 	console.log(elt);
-	//$(this).attr("src","img/disk15.jpg");
-	this.innerHTML("<img src = img/disk15.jpg");
+	$(elt).attr("src","img/disk15.jpg");
+	//this.innerHTML("<img src = img/disk15.jpg");
 	$(this).attr("onclick","supprimer_nouvelle(this)");
+	//creer l'objet il faut
 	if(indexOfResultat(elt,recherche_courante_news) == -1){
 		recherche_courante_news.push(elt);
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
@@ -137,8 +138,8 @@ function sauver_nouvelle(elt) {
 
 
 function supprimer_nouvelle(elt) {
-	//$(this).attr("src","img/horloge15.jpg");
-	this.innerHTML("<img src = img/horloge15.jpg");
+	$(elt).attr("src","img/horloge15.jpg");
+	//this.innerHTML("<img src = img/horloge15.jpg");
 	$(this).attr("onclick","sauver_nouvelle(this)");
 	if(indexOfResultat(elt,recherche_courante_news) != -1){
 		recherche_courante_news.splice(indexOfResultat(elt,recherche_courante_news));
