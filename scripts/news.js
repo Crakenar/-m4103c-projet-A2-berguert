@@ -112,7 +112,7 @@ function maj_resultats(res) {
 	console.log(res);
 	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
-		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a><span class="date_news"> '+decodeHtmlEntities(value.date)+'</span><span class="action_news" ><img src="img/horloge15.jpg" onclick="sauver_nouvelle()"/></span></p>');
+		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a><span class="date_news"> '+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)" ><img src="img/horloge15.jpg"/></span></p>');
 		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a></p>');
 
 	});
@@ -136,5 +136,9 @@ function sauver_nouvelle(elt) {
 function supprimer_nouvelle(elt) {
 	$(this).attr("src","img/horloge15.jpg");
 	$(this).attr("onclick","sauver_nouvelle()");
+	if(indexOfResultat(e,recherche_courante_news) != -1){
+		recherche_courante_news.splice(indexOfResultat(e,recherche_courante_news));
+		localStorage.setItem("recherches_courante_news",JSON.stringify(recherches_courante_news));
+	}
 }
 
