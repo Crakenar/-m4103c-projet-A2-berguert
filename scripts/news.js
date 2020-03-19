@@ -94,7 +94,8 @@ function init() {
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 
-		
+		//image => display = block
+		$("#wait").css("display","block");
 		const data = $("#zone_saisie").val();
 		console.log(data);
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
@@ -104,11 +105,13 @@ function rechercher_nouvelles() {
 
 //function callback => si jamais la requete ajax get reussis alors on fait celle ci
 function maj_resultats(res) {
-	//TODO ...
+	$("#wait").css("display","none");
 	console.log(res);
 	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
 	$(res).each(function(){
-		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+res.url+' target="_blank">'+res.titre+'</a><span class="date_news"> '+res.date+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
+		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+res.url+' target="_blank">'+res.titre+'</a><span class="date_news"> '+res.date+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
+		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+res.url+' target="_blank">'+res.titre+'</a></p>');
+
 	});
 	
 	
