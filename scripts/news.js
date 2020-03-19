@@ -106,6 +106,11 @@ function rechercher_nouvelles() {
 function maj_resultats(res) {
 	//TODO ...
 	console.log(res);
+	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
+	$(res).each(function(index,value){
+		$("#resultats").prepend('<p ><label>'+value +'</label></p>');
+	})
+	
 	
 }
 
