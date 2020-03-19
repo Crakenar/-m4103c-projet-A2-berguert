@@ -94,7 +94,7 @@ function init() {
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 //on nettoye la zone de resultat pour eviter d'afficher encore et encore
-	$("#resultats").val("");
+	$("#resultats").empty();
 		//image => display = block
 		$("#wait").css("display","block");
 		const data = $("#zone_saisie").val();
@@ -110,8 +110,8 @@ function maj_resultats(res) {
 	console.log(res);
 	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
-		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+res.url+' target="_blank">'+res.titre+'</a><span class="date_news"> '+res.date+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
-		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a></p>');
+		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a><span class="date_news"> '+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
+		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a></p>');
 
 	});
 	
