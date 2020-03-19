@@ -116,7 +116,7 @@ function maj_resultats(res) {
 		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a></p>');
 		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 		' target="_blank">'+decodeHtmlEntities(value.titre)+
-		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
+		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>');
 	});
 	
 	
