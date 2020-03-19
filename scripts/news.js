@@ -123,7 +123,9 @@ function maj_resultats(res) {
 //delete dans recherche_courante_news	
 
 function sauver_nouvelle(elt) {
-	console.log(elt);
+	//parentElement => titre
+	console.log(elt.parent());
+		console.log(elt);
 	//$(elt).firstChild.attr("src","");
 	//$(elt).attr("src","img/disk15.jpg");
 	$(elt).html("<img src = img/disk15.jpg />");
@@ -143,6 +145,7 @@ function supprimer_nouvelle(elt) {
 	$(elt).html("<img src = img/horloge15.jpg />");
 	$(elt).attr("onclick","sauver_nouvelle(this)");
 	if(indexOfResultat(elt,recherche_courante_news) != -1){
+		console.log("on enleve");
 		recherche_courante_news.splice(indexOfResultat(elt,recherche_courante_news));
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
 	}
