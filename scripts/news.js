@@ -124,7 +124,7 @@ function sauver_nouvelle(elt) {
 	console.log(elt);
 	//$(elt).firstChild.attr("src","");
 	//$(elt).attr("src","img/disk15.jpg");
-	$(elt).html("img/disk15.jpg");
+	$(elt).html("<img src = img/disk15.jpg />");
 	$(elt).attr("onclick","supprimer_nouvelle(this)");
 	//creer l'objet il faut
 	if(indexOfResultat(elt,recherche_courante_news) == -1){
