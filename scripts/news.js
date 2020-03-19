@@ -110,7 +110,7 @@ function maj_resultats(res) {
 	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
 		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+res.url+' target="_blank">'+res.titre+'</a><span class="date_news"> '+res.date+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="images/horloge15.jpg"/></span></p>');
-		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+value.url+' target="_blank">'+value.titre+'</a></p>');
+		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a></p>');
 
 	});
 	
