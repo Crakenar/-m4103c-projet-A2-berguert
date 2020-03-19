@@ -73,7 +73,7 @@ function toJSON(){
 }
 
 
-
+//???
 function init() {
 	//recuperer les données du stockage local
 	let obj_json = localStorage.getItem("recherches");
@@ -90,7 +90,7 @@ function init() {
 
 }
 
-
+//model
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 //on nettoye la zone de resultat pour eviter d'afficher encore et encore
@@ -105,12 +105,13 @@ function rechercher_nouvelles() {
 
 
 //function callback => si jamais la requete ajax get reussis alors on fait celle ci
+//view
 function maj_resultats(res) {
 	$("#wait").css("display","none");
 	console.log(res);
 	//res est un objet de plusieurs offres, on vezut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
-		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a><span class="date_news"> '+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauvez_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>');
+		$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a><span class="date_news"> '+decodeHtmlEntities(value.date)+'</span><span class="action_news" ><img src="img/horloge15.jpg" onclick="sauvez_nouvelle(this)"/></span></p>');
 		//$("#resultats").prepend('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+' target="_blank">'+decodeHtmlEntities(value.titre)+'</a></p>');
 
 	});
