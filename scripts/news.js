@@ -127,7 +127,7 @@ function sauver_nouvelle(elt) {
 	console.log($(elt).parent());
 	let ojb = {
 		"titre" : $(elt).parent().html,
-		"date" : $(elt).parent().$(".date_news"),
+		"date" : $(elt).parent(),
 		"url" : $(elt).parent().attr('href')
 	}
 		console.log(obj);
