@@ -142,6 +142,15 @@ function supprimer_nouvelle(elt) {
 	}
 }
 
+
+
+//Autocompletion
+//A chaque Entrée de clavier => keyup, verifier si le mot n'a pas une ressemblance dans le localstorage (recherches sauvegardées)
+//Apparement Jquery UI le fait tres bien
+
+//Model et view
+$("#zone_saisie").autocomplete( "option", "source", JSON.parse(recherches).Result)
+
 // Recherche Quand touche entrée
 $("#zone_saisie").keypress(function(event){
 	let keycode = (event.keycode ? event.keycode : event.which);
@@ -149,10 +158,3 @@ $("#zone_saisie").keypress(function(event){
 		rechercher_nouvelles();
 	}
 });
-
-//Autocompletion
-//A chaque Entrée de clavier => keyup, verifier si le mot n'a pas une ressemblance dans le localstorage (recherches sauvegardées)
-//Apparement Jquery UI le fait tres bien
-
-//Model et
-$("#zone_saisie").autocomplete( "option", "source", JSON.parse(recherches).Result);
