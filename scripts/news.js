@@ -154,5 +154,5 @@ $("#zone_saisie").keypress(function(event){
 //A chaque Entrée de clavier => keyup, verifier si le mot n'a pas une ressemblance dans le localstorage (recherches sauvegardées)
 //Apparement Jquery UI le fait tres bien
 
-
+//Model et
 $("#zone_saisie").autocomplete( "option", "source", JSON.parse(recherches).Result);
