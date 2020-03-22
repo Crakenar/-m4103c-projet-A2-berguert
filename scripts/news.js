@@ -55,22 +55,6 @@ function selectionner_recherche(elt) {
 	recherche_courante = elt.innerText;
 }
 
-/*1.2 */
-
-
-function toJSON(){
-	let obj = { 
-	"recherches":[],
-	"recherches-stockees":$("#zone_saisie").val()};
-	//pour tout les labels de recherches-stockees
-	$("#recherches-stockees").each(function()
-	{
-		obj.recherches.push(
-			{"id": $(this).attr('id'), "val":$(this).val() });
-		
-	});
-	return JSON.stringify(obj);
-}
 
 
 //model
@@ -124,13 +108,11 @@ function maj_resultats(res) {
 
 function sauver_nouvelle(elt) {
 	//parentElement => titre
-	console.log($(elt).parent());
 	let obj = {
 		"titre" : $(elt).parent().find("a").text(),
 		"date" : $(elt).parent().find(".date_news").text(),
 		"url" : $(elt).parent().find("a").attr('href')
 	}
-		console.log(obj);
 	//$(elt).firstChild.attr("src","");
 	//$(elt).attr("src","img/disk15.jpg");
 	$(elt).html("<img src = img/disk15.jpg />");
@@ -155,9 +137,16 @@ function supprimer_nouvelle(elt) {
 	$(elt).html("<img src = img/horloge15.jpg />");
 	$(elt).attr("onclick","sauver_nouvelle(this)");
 	if(indexOfResultat(recherche_courante_news,obj) != -1){
-		console.log("on enleve");
 		recherche_courante_news.splice(indexOfResultat(obj,recherche_courante_news));
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
 	}
 }
+
+// Recherche Quand touche entrée
+$("#zone_saisie").keypress(function(event){
+	let keycode = (event.keycode ? event.keycode : event.which);
+	if(keycode == '13'){
+		rechercher_nouvelles();
+	}
+})
 
