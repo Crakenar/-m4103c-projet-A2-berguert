@@ -152,7 +152,7 @@ function supprimer_nouvelle(elt) {
 $("#zone_saisie").autocomplete( "option", "source", JSON.parse(recherches).Result)
 
 // Recherche Quand touche entrée
-$("#form1").keypress(function(event){
+$("#zone_saisie").keypress(function(event){
 	let keycode = (event.keycode ? event.keycode : event.which);
 	if(keycode == '13'){
 		rechercher_nouvelles();
