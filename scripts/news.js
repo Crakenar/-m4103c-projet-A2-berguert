@@ -96,7 +96,8 @@ function rechercher_nouvelles() {
 		const data = $("#zone_saisie").val();
 		//.get est asynchrone
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
-	
+	//vider recherche_couraznt_news sinon tout les cookies se superposeront ( 1: coucou ..... 2 : coucou, salut)
+	recherche_courante_news.empty();
 }
 
 
