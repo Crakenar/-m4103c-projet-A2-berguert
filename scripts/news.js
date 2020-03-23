@@ -159,7 +159,7 @@ function sauver_nouvelle(elt) {
 	$(elt).attr("onclick","supprimer_nouvelle(this)");
 	//creer l'objet il faut
 	if(indexOfResultat(recherche_courante_news,obj) == -1){
-		$(recherche_courante_news).push(obj);
+		recherche_courante_news.push(obj);
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
 	//on a donc 1 cookie par recherche, faire des verif pour pas pouvoir mettre le même plusieurs fois ??
 		localStorage.setItem( $("#zone_saisie").val(),JSON.stringify(recherche_courante_news));
