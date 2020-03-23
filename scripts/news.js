@@ -5,13 +5,6 @@ var recherche_courante;
 // Tableau d'objets de type resultats (avec titre, date et url)
 var recherche_courante_news = [];
 
-/*class Paragraphe{
-	constructor(id,value){
-		this.id = id;
-		this.value = value;
-	}
-}*/
-
 
 /*1.1 */	
 //si clic sur l'image disk alors ajout chaine au tableau recherches[]
@@ -37,10 +30,6 @@ function ajouter_recherche(){
 function supprimer_recherche(elt) {
 	//supprimer l'element p dans recherches-stockees
 	$(elt).parent().remove();
-
-	
-	//	localStorage.clear(); == localStorage.removeItem("recherches");
-	//supprimer la recherche du tableau recherches[]
 	const indexSupprimer = recherches.indexOf($(elt).parent().find("label").text());
 	recherches.splice(indexSupprimer,1);
 	//supprimer dans localstorage aussi
@@ -59,9 +48,11 @@ function selectionner_recherche(elt) {
 
 	//variable globale recherche_courante_news => cookie
 	//localstorage.getItem => recuperer le "cookie" === nom de la recherche
-	recherche_courante_news = JSON.parse(localStorage.getItem($("#zone_saisie").val()));
+	//$("#zone_saisie").val() ou function e.target.text
+
+	recherche_courante_news2 = JSON.parse(localStorage.getItem($("#zone_saisie").val()));
 	//affichage des recherche sauvegardées dans la zone resultats
-	$.each(recherche_courante_news,function(index,value){
+	$.each(recherche_courante_news2,function(index,value){
 		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 		' target="_blank">'+decodeHtmlEntities(value.titre)+
 		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
@@ -151,8 +142,6 @@ function sauver_nouvelle(elt) {
 		"date" : $(elt).parent().find(".date_news").text(),
 		"url" : $(elt).parent().find("a").attr('href')
 	}
-	//$(elt).firstChild.attr("src","");
-	//$(elt).attr("src","img/disk15.jpg");
 	$(elt).html("<img src = img/disk15.jpg />");
 	$(elt).attr("onclick","supprimer_nouvelle(this)");
 	//creer l'objet il faut
@@ -176,6 +165,7 @@ function supprimer_nouvelle(elt) {
 	$(elt).html("<img src = img/horloge15.jpg />");
 	$(elt).attr("onclick","sauver_nouvelle(this)");
 	if(indexOfResultat(recherche_courante_news,obj) != -1){
+		//recherche_courante_news.splice(indexOfResultat(obj,recherche_courante_news));
 		recherche_courante_news.splice(indexOfResultat(obj,recherche_courante_news));
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
 		localStorage.setItem($("#zone_saisie").val(),JSON.stringify(recherche_courante_news));
@@ -190,7 +180,6 @@ function supprimer_nouvelle(elt) {
 //Apparement Jquery UI le fait tres bien
 
 //Model et view
-var test = ['Grenoble','Lyon','Paris'];
 $("#zone_saisie").autocomplete({
 	source : recherches,
 	focus : true
@@ -213,4 +202,7 @@ Toujours besoin de faire un clic sur ok pour pouvoir tout faire même apres refr
 - si l'on veut la correspondance avec les resultats enregistrés
 etc.
 
+
+Entrer lenom Grenoble => sauvegarder la recherche
+Cliquer sur recherche stockées, puis sur ok, enregistrer une nouvelle => error t is null
 */
