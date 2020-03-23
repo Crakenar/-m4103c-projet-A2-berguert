@@ -152,7 +152,8 @@ function supprimer_nouvelle(elt) {
 //autocompletion eleve le submit de Enter !!!
 var test = ['x','y','z'];
 $(function(){
-	$("#zone_saisie").autocomplete({
+	var zone = $("#zone_saisie");
+	zone.autocomplete({
 		source : test,
 		minLength : 1,
 		response: function(event, ui){
