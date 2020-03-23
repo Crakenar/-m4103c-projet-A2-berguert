@@ -111,7 +111,7 @@ let text;
 		text = $(x).text();
 	});
 
-	if(localStorage.getItem(text) !== null){
+	if(localStorage.getItem($.parseHTML(text)) !== null){
 		alert("buien joue");
 		console.log(localStorage.getItem(text));
 		
