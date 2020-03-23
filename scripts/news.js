@@ -106,10 +106,10 @@ function rechercher_nouvelles() {
 		return $(this).text();
 	})
 	));*/
-	$("#recherches-stockees").click(function(e){
+	$("#recherches-stockees").click(function(){
 		console.log($(this));
 		console.log($(this).text());
-		console.log(e.tardet.id);
+
 		
 	})
 
