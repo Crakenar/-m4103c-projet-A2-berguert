@@ -110,7 +110,7 @@ let text;
 		text = $(x).text();
 	});
 
-	recherche_courante_news = localStorage.getItem(text);
+	//recherche_courante_news = localStorage.getItem(text);
 	console.log(recherche_courante_news);
 	
 
