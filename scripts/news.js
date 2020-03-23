@@ -102,13 +102,17 @@ function rechercher_nouvelles() {
 	//il faudrait récuperer le label sur la recherche_saved sur laquelle on clic
 	//recherche_courante_news = JSON.parse(localStorage.getItem());
 
-
+//besoin du clic sur ok ou Entree pour afficher
+let text;
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
 		console.log($(x).text()); // the text of the clicked element
+		text = $(x).text();
 	});
 
-
+	recherche_courante_news = JSON.parse(localStorage.getItem(text));
+	console.log(recherche_courante_news);
+	
 
 }
 
