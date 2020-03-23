@@ -109,23 +109,15 @@ function rechercher_nouvelles() {
 
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
-		//console.log($(x).text()); // the text of the clicked element
 		maRecherche = $(x).text();
-		console.log("ici ma recherche dans function" + maRecherche);
 	});
-	console.log("ici ma recherche " + maRecherche);
 	
 	if(localStorage.getItem(maRecherche)){
-		alert("buien joue");
-		//console.log(localStorage.getItem(maRecherche));
+		//alert("buien joue");
 		recherche_courante_news = localStorage.getItem(maRecherche);
 	}else{
-		alert("pas de cookie pour toi")
-		//console.log(localStorage.getItem(maRecherche));
+		//alert("pas de cookie pour toi")
 	}
-	console.log(recherche_courante_news);
-	
-
 }
 
 
@@ -137,7 +129,7 @@ function maj_resultats(res) {
 	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
 		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
-		if(indexOfResultat(recherche_courante_news,res[index]) != -1){
+		if(indexOfResultat(recherche_courante_news,res[index]) == -1){
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
 			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
