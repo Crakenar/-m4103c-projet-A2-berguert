@@ -109,8 +109,9 @@ function rechercher_nouvelles() {
 		alert("yes");
 	})*/
 
-	$("#saved_research>p").click(function(event){
+	$("#recherches-stockeesh>p").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
+		alert("yes");
 		console.log($(x).text()); // the text of the clicked element
 	});
 
