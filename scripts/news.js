@@ -113,6 +113,8 @@ let text;
 
 	if(localStorage.getItem(text) !== null){
 		alert("buien joue");
+		console.log(localStorage.getItem(text));
+		
 		recherche_courante_news = localStorage.getItem(text);
 	}else{
 		alert("pas de cookie pour toi")
