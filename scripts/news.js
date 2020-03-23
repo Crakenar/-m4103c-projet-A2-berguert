@@ -88,6 +88,7 @@ function init() {
 }
 
 //model
+var maRecherche;
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 	//on nettoye la zone de resultat pour eviter d'afficher encore et encore
@@ -105,22 +106,19 @@ function rechercher_nouvelles() {
 	//recherche_courante_news = JSON.parse(localStorage.getItem());
 	$("#resultats").html("");
 //besoin du clic sur ok ou Entree pour afficher
-$.maReference = {};
-
 
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
 		//console.log($(x).text()); // the text of the clicked element
-		 $.maReference.maRecherche = $(x).text();
-		console.log("ici ma recherche dans function" + $.maReference.maRecherche);
+		maRecherche = $(x).text();
+		console.log("ici ma recherche dans function" + maRecherche);
 	});
-
-	console.log("ici ma recherche " + $.maReference.maRecherche);
+	console.log("ici ma recherche " + maRecherche);
 	
-	if(localStorage.getItem($.maReference.maRecherche) !== null){
+	if(localStorage.getItem(maRecherche)){
 		alert("buien joue");
 		//console.log(localStorage.getItem(maRecherche));
-		recherche_courante_news = localStorage.getItem($.maReference.maRecherche);
+		recherche_courante_news = localStorage.getItem(maRecherche);
 	}else{
 		alert("pas de cookie pour toi")
 		//console.log(localStorage.getItem(maRecherche));
