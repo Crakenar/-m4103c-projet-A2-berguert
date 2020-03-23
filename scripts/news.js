@@ -60,9 +60,9 @@ function selectionner_recherche(elt) {
 	console.log(recherche_courante_news);
 	//affichage des recherche sauvegardées dans la zone resultats
 	$(recherche_courante_news).each(function(index,value){
-		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
-		' target="_blank">'+decodeHtmlEntities(value.titre)+
-		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
+		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+value.url+
+		' target="_blank">'+value.titre+
+		'</a><span class="date_news">'+value.date+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
 	});
 	
 }
