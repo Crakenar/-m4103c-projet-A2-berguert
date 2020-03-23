@@ -130,10 +130,12 @@ function maj_resultats(res) {
 	$(res).each(function(index,value){
 		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
 		if(indexOfResultat(recherche_courante_news,res[index]) != -1){
+			console.log("present ! ");			
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
 			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
-		}else{
+		}else{	
+			console.log("pas présent");					
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
 			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
