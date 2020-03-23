@@ -106,10 +106,15 @@ function rechercher_nouvelles() {
 		return $(this).text();
 	})
 	));*/
-	$("#recherches-stockees > p").click(function(){
+	/*$("#recherches-stockees > p").click(function(){
 		console.log($(this).text());
 		alert("yes");
-	})
+	})*/
+
+	$("#saved_research").click(function(event){
+		var x = event.target; // event.target has the exact element clicked
+		console.log($(x).text()); // the text of the clicked element
+	});
 
 }
 
