@@ -112,15 +112,15 @@ $.maReference = {};
 		var x = event.target; // event.target has the exact element clicked
 		//console.log($(x).text()); // the text of the clicked element
 		 $.maReference.maRecherche = $(x).text();
-		console.log("ici ma recherche dans function" + maRecherche);
+		console.log("ici ma recherche dans function" + maReference.maRecherche);
 	});
 
-	console.log("ici ma recherche " + $.maReference.maRecherche);
+	console.log("ici ma recherche " + maReference.maRecherche);
 	
-	if(localStorage.getItem($.maReference.maRecherche)){
+	if(localStorage.getItem(maReference.maRecherche)){
 		alert("buien joue");
 		//console.log(localStorage.getItem(maRecherche));
-		recherche_courante_news = localStorage.getItem($.maReference.maRecherche);
+		recherche_courante_news = localStorage.getItem(maReference.maRecherche);
 	}else{
 		alert("pas de cookie pour toi")
 		//console.log(localStorage.getItem(maRecherche));
