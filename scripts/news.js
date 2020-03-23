@@ -58,7 +58,6 @@ function selectionner_recherche(elt) {
 	//variable globale recherche_courante_news => cookie
 	//localstorage.getItem => recuperer le "cookie" === nom de la recherche
 	recherche_courante_news = JSON.parse(localStorage.getItem($("#zone_saisie").val()));
-	console.log(recherche_courante_news);
 	//affichage des recherche sauvegardées dans la zone resultats
 	$.each(recherche_courante_news,function(index,value){
 		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
@@ -75,7 +74,6 @@ function init() {
 	//recuperer les données du stockage local
 	let obj_json = localStorage.getItem("recherches");
 	let obj = JSON.parse(obj_json);
-	console.log(obj);
 	if(obj != ""){
 		$(obj).each(function(index,value){
 			recherches.push(value);
@@ -123,7 +121,7 @@ function rechercher_nouvelles() {
 //view
 function maj_resultats(res) {
 	$("#wait").css("display","none");
-	console.log(res);
+
 	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
 		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
