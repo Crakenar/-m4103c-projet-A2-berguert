@@ -107,10 +107,7 @@ function rechercher_nouvelles() {
 	})
 	));*/
 	$("#recherches-stockees").click(function(){
-		console.log($(this));
-		console.log($(this).text());
-
-		
+		console.log($(".titre-recherche").text());
 	})
 
 }
