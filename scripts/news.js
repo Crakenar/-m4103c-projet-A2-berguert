@@ -60,9 +60,9 @@ function selectionner_recherche(elt) {
 	console.log(recherche_courante_news);
 	//affichage des recherche sauvegardées dans la zone resultats
 	$(recherche_courante_news).each(function(index,value){
-		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+value.url+
-		' target="_blank">'+value.titre+
-		'</a><span class="date_news">'+value.date+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
+		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url[i])+
+		' target="_blank">'+decodeHtmlEntities(value.titre[i])+
+		'</a><span class="date_news">'+decodeHtmlEntities(value.date[i])+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
 	});
 	
 }
@@ -93,7 +93,6 @@ function rechercher_nouvelles() {
 	$("#resultats").empty();
 		$("#wait").css("display","block");
 		const data = $("#zone_saisie").val();
-		console.log(data);
 		//.get est asynchrone
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
 	
