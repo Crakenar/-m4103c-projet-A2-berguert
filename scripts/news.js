@@ -42,7 +42,7 @@ function supprimer_recherche(elt) {
 	//	localStorage.clear(); == localStorage.removeItem("recherches");
 	//supprimer la recherche du tableau recherches[]
 	const indexSupprimer = recherches.indexOf($(elt).parent().find("label").text());
-	recherches.splice(indexSupprimer);
+	recherches.splice(indexSupprimer,1);
 	//supprimer dans localstorage aussi
 	//localStorage.removeItem(this);
 	//c'est moche A REFAIRE
