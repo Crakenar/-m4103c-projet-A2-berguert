@@ -111,15 +111,15 @@ var maRecherche;
 		//console.log($(x).text()); // the text of the clicked element
 		maRecherche = $(x).text();
 	});
-	console.log(maRecherche);
+	console.log("ici ma recherche " + maRecherche);
 	
 	if(localStorage.getItem(maRecherche)){
 		alert("buien joue");
-		console.log(localStorage.getItem(maRecherche));
+		//console.log(localStorage.getItem(maRecherche));
 		recherche_courante_news = localStorage.getItem(maRecherche);
 	}else{
 		alert("pas de cookie pour toi")
-		console.log(localStorage.getItem(maRecherche));
+		//console.log(localStorage.getItem(maRecherche));
 	}
 	console.log(recherche_courante_news);
 	
