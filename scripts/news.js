@@ -114,9 +114,7 @@ function rechercher_nouvelles() {
 		console.log($(x).text()); // the text of the clicked element
 	});
 
-	$('#recherches-stockees > p').on('click', function() {
-		console.log($(this).text());
-	});
+
 
 }
 
