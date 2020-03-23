@@ -45,7 +45,7 @@ function supprimer_recherche(elt) {
 	});
 	//	localStorage.clear(); == localStorage.removeItem("recherches");
 	//supprimer la recherche du tableau recherches[]
-	const indexSupprimer = recherches.indexOf($(x));
+	const indexSupprimer = recherches.indexOf($(rechercheASupprimer));
 	console.log(indexSupprimer);
 	recherches.splice(indexSupprimer);
 	//supprimer dans localstorage aussi
