@@ -13,7 +13,7 @@ function ajouter_recherche(){
 	//recuperer la chaine de carachtere
 	//verifier si dans recherches, il y a la meme recherche
 	const donneeEntree = $("#zone_saisie").val();
-	if(recherches.indexOf(donneeEntree) == -1){
+	if(recherches.indexOf(donneeEntree) == -1 && donneeEntree != ""){
 		recherches.push(donneeEntree);
 		//ajouter l'element aux recherches stockées
 		$("#recherches-stockees").prepend('<p class="titre-recherche" ><label onclick=selectionner_recherche(this)>'+donneeEntree+'</label><img src="images/croix30.jpg" class="icone-croix " onclick="supprimer_recherche(this)"/></p>');
@@ -103,7 +103,7 @@ function rechercher_nouvelles() {
 		//console.log($(x).text()); // the text of the clicked element
 		maRecherche = $(x).text();
 	});
-	
+
 	if(localStorage.getItem(maRecherche)){
 		//alert("buien joue");
 		//!!!!!!! change le type de recherche_courante_news en string !!!! pas normal
@@ -118,11 +118,9 @@ function rechercher_nouvelles() {
 //view
 function maj_resultats(res) {
 	$("#wait").css("display","none");
-
 	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
 		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
-
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
 			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
