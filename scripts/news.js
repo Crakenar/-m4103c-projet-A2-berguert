@@ -89,19 +89,19 @@ function init() {
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 	//on nettoye la zone de resultat pour eviter d'afficher encore et encore
-	$("#resultats").empty();
+
 		$("#wait").css("display","block");
 		const data = $("#zone_saisie").val();
 		//.get est asynchrone
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
 	//vider recherche_couraznt_news sinon tout les cookies se superposeront ( 1: coucou ..... 2 : coucou, salut)
-	recherche_courante_news = []; //argh c moche
+	//recherche_courante_news = []; //argh c moche
 	//et on la remplis avec le contenu du localstorage de la recherche en question
 	//on ne peut pas utiliser $("#zone_saisie").val() car si l'utilisateur change la recherche mais veut quand m
 	//même faire l'action alors ça marchera pas => exemple impossible d'acceder à l'element car non existant
 	//il faudrait récuperer le label sur la recherche_saved sur laquelle on clic
 	//recherche_courante_news = JSON.parse(localStorage.getItem());
-
+	$("#resultats").empty();
 //besoin du clic sur ok ou Entree pour afficher
 let text;
 	$("#recherches-stockees").click(function(event){
