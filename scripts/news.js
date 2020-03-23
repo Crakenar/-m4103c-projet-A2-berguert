@@ -29,6 +29,7 @@ function ajouter_recherche(){
 	}
 	//si clic sur le label => selectionner_recherche(this)
 	//si clic sur croix => supprimer_recherche(this)
+	recherche_courante_news = [];
 }
 
 
