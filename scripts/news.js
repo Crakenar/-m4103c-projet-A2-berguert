@@ -50,6 +50,7 @@ function supprimer_recherche(elt) {
 //controller
 function selectionner_recherche(elt) {
 	$("#zone_saisie").val("");
+	$("#resultat").val("");
 	//jquery ??????
 	$("#zone_saisie").val(elt.innerText); 
 	recherche_courante = elt.innerText;
