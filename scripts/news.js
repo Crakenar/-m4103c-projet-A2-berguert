@@ -140,7 +140,7 @@ function supprimer_nouvelle(elt) {
 	if(indexOfResultat(recherche_courante_news,obj) != -1){
 		recherche_courante_news.splice(indexOfResultat(obj,recherche_courante_news));
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
-		localStorage.setItem(recherche_courante,JSON.stringify(recherche_courante_news));
+		localStorage.setItem($("#zone_saisie").val(),JSON.stringify(recherche_courante_news));
 
 	}
 }
