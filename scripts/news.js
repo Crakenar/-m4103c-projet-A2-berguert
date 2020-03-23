@@ -152,7 +152,7 @@ function supprimer_nouvelle(elt) {
 //autocompletion eleve le submit de Enter !!!
 $(function(){
 	$("#form1").autocomplete({
-		source : JSON.parse(recherches).Result,
+		source : recherches,
 		minLength : 1,
 	}).keypress(function(event){
 		if(event.keyCode === 13){
