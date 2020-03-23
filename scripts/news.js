@@ -110,6 +110,8 @@ function rechercher_nouvelles() {
 	})*/
 
 	$("#recherches-stockees>p").click(function(event){
+		console.log(recherche_courante);
+		 
 		var x = event.target; // event.target has the exact element clicked
 		alert("yes");
 		console.log($(x).text()); // the text of the clicked element
