@@ -105,7 +105,7 @@ function rechercher_nouvelles() {
 /*	recherche_courante_news = JSON.parse(localStorage.getItem($("#recherches-stockees").click(function(){
 		return $(this).text();
 	})
-	));/*
+	));*/
 
 
 }
