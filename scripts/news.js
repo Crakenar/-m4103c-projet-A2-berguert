@@ -121,9 +121,12 @@ function sauver_nouvelle(elt) {
 	if(indexOfResultat(recherche_courante_news,obj) == -1){
 		recherche_courante_news.push(obj);
 		localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news));
+		localStorage.setItem(recherche_courante,JSON.stringify(recherche_courante_news));
+
 	}
 	//Recherche courante contient le text de la nouvelle recherche
-	localStorage.setItem(recherche_courante,JSON.stringify(recherche_courante_news));
+	//on a donc 1 cookie par recherche, faire des verif pour pas pouvoir mettre le même plusieurs fois ??
+
 }
 
 
