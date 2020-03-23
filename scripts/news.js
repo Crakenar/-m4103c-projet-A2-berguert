@@ -105,7 +105,7 @@ function rechercher_nouvelles() {
 	//recherche_courante_news = JSON.parse(localStorage.getItem());
 	$("#resultats").html("");
 //besoin du clic sur ok ou Entree pour afficher
-let maRecherche;
+var maRecherche;
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
 		//console.log($(x).text()); // the text of the clicked element
