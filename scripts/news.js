@@ -43,13 +43,11 @@ function supprimer_recherche(elt) {
 		//console.log($(x).text()); // the text of the clicked element
 		rechercheASupprimer = $(x);
 	});
-	recherches[rechercheASupprimer] = [];
 	//	localStorage.clear(); == localStorage.removeItem("recherches");
 	//supprimer la recherche du tableau recherches[]
-//	const indexSupprimer = recherches.indexOf($(elt).parent().parent().val());
-//	console.log(indexSupprimer);
-	
-	//recherches.splice(indexSupprimer);
+	const indexSupprimer = recherches.indexOf($(x));
+	console.log(indexSupprimer);
+	recherches.splice(indexSupprimer);
 	//supprimer dans localstorage aussi
 	//localStorage.removeItem(this);
 	//c'est moche A REFAIRE
