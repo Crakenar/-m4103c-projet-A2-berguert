@@ -109,7 +109,7 @@ let text;
 		console.log($(x).text()); // the text of the clicked element
 		text = $(x).text();
 	});
-
+	recherche_courante_news = []; //argh c moche
 	//recherche_courante_news = localStorage.getItem(text);
 	console.log(recherche_courante_news);
 	
