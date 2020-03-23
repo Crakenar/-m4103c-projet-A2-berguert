@@ -56,7 +56,7 @@ function selectionner_recherche(elt) {
 
 	//variable globale recherche_courante_news => cookie
 	//localstorage.getItem => recuperer le "cookie" === nom de la recherche
-	recherche_courante_news = localStorage.getItem($("#zone_saisie").val());
+	recherche_courante_news = JSON.parse(localStorage.getItem($("#zone_saisie").val()));
 	console.log(recherche_courante_news);
 	//affichage des recherche sauvegardées dans la zone resultats
 	$.each(recherche_courante_news,function(index,value){
