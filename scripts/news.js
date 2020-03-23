@@ -149,8 +149,9 @@ function supprimer_nouvelle(elt) {
 //Apparement Jquery UI le fait tres bien
 
 //Model et view
+//autocompletion eleve le submit de Enter !!!
 $(function(){
-	$("#zone_saisie").autocomplete({
+	$("#form1").autocomplete({
 		source : JSON.parse(recherches).Result,
 		minLength : 1,
 	}).keypress(function(event){
