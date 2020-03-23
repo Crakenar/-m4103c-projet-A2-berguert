@@ -109,7 +109,10 @@ function rechercher_nouvelles() {
 		alert("yes");
 	})*/
 
-
+	$("#recherches-stockees").click(function(event){
+		var x = event.target; // event.target has the exact element clicked
+		console.log($(x).text()); // the text of the clicked element
+	});
 
 	$('#recherches-stockees > p').on('click', function() {
 		console.log($(this).text());
