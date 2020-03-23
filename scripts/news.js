@@ -101,7 +101,7 @@ function rechercher_nouvelles() {
 	//même faire l'action alors ça marchera pas => exemple impossible d'acceder à l'element car non existant
 	//il faudrait récuperer le label sur la recherche_saved sur laquelle on clic
 	//recherche_courante_news = JSON.parse(localStorage.getItem());
-	$("#resultats").empty();
+	$("#resultats").html("");
 //besoin du clic sur ok ou Entree pour afficher
 let text;
 	$("#recherches-stockees").click(function(event){
