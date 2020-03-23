@@ -102,10 +102,10 @@ function rechercher_nouvelles() {
 	//on ne peut pas utiliser $("#zone_saisie").val() car si l'utilisateur change la recherche mais veut quand m
 	//même faire l'action alors ça marchera pas => exemple impossible d'acceder à l'element car non existant
 	//il faudrait récuperer le label sur la recherche_saved sur laquelle on clic
-	recherche_courante_news = JSON.parse(localStorage.getItem($("#recherches-stockees").click(function(){
+/*	recherche_courante_news = JSON.parse(localStorage.getItem($("#recherches-stockees").click(function(){
 		return $(this).text();
 	})
-	));
+	));/*
 
 
 }
