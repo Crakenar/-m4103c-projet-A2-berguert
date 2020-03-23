@@ -152,12 +152,12 @@ function supprimer_nouvelle(elt) {
 //autocompletion eleve le submit de Enter !!!
 var test = ['Grenoble','Lyon','Parie'];
 $("#zone_saisie").autocomplete({
-	source : test
+	source : recherches
 }).keypress(function(event){
 	if(event.keyCode === 13){
 		rechercher_nouvelles();
 	}
-})
+});
 
 
 
