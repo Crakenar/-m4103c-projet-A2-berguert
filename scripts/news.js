@@ -109,7 +109,7 @@ function rechercher_nouvelles() {
 		alert("yes");
 	})*/
 
-	$("#saved_research").click(function(event){
+	$("#saved_research>p").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
 		console.log($(x).text()); // the text of the clicked element
 	});
