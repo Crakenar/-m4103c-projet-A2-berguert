@@ -53,6 +53,12 @@ function selectionner_recherche(elt) {
 	//jquery ??????
 	$("#zone_saisie").val(elt.innerText); 
 	recherche_courante = elt.innerText;
+
+	//variable globale recherche_courante_news => cookie
+	//localstorage.getItem => recuperer le "cookie" === nom de la recherche
+	recherche_courante_news = localStorage.getItem($("#zone_saisie").val());
+	console.log(recherche_courante_news);
+	
 }
 
 
