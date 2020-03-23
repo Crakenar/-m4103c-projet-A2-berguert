@@ -129,7 +129,7 @@ function maj_resultats(res) {
 	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
 		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
-		if(recherche_courante_news.titre == res.titre){
+		if(recherche_courante_news.titre == res.titre && recherche_courante_news.date == res.date){
 	//	if(indexOfResultat(recherche_courante_news,res[index]) != -1){
 			console.log("present ! ");			
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
