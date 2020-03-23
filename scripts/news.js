@@ -106,8 +106,9 @@ function rechercher_nouvelles() {
 		return $(this).text();
 	})
 	));*/
-	$("#recherches-stockees > p").on('clic',function(){
+	$("#recherches-stockees > p").click(function(){
 		console.log($(this).text());
+		alert("yes");
 	})
 
 }
