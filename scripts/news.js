@@ -96,7 +96,7 @@ function rechercher_nouvelles() {
 		//.get est asynchrone
 		$.get("https://carl-vincent.fr/search-internships.php?data="+data,maj_resultats);
 	//vider recherche_couraznt_news sinon tout les cookies se superposeront ( 1: coucou ..... 2 : coucou, salut)
-	recherche_courante_news = []; //argh c moche
+	//recherche_courante_news = []; //argh c moche
 	//et on la remplis avec le contenu du localstorage de la recherche en question
 	//on ne peut pas utiliser $("#zone_saisie").val() car si l'utilisateur change la recherche mais veut quand m
 	//même faire l'action alors ça marchera pas => exemple impossible d'acceder à l'element car non existant
