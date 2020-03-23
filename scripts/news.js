@@ -110,6 +110,8 @@ var maRecherche;
 		var x = event.target; // event.target has the exact element clicked
 		//console.log($(x).text()); // the text of the clicked element
 		maRecherche = $(x).text();
+		console.log("ici ma recherche dans function" + maRecherche);
+		
 	});
 	console.log("ici ma recherche " + maRecherche);
 	
