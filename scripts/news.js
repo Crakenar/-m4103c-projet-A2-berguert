@@ -112,8 +112,10 @@ let text;
 	});
 
 	if(localStorage.getItem(text) !== null){
-		alert("nop");
+		alert("buien joue");
 		recherche_courante_news = localStorage.getItem(text);
+	}else{
+		alert("pas de cookie pour toi")
 	}
 	console.log(recherche_courante_news);
 	
