@@ -149,41 +149,12 @@ function supprimer_nouvelle(elt) {
 //Apparement Jquery UI le fait tres bien
 
 //Model et view
-//autocompletion eleve le submit de Enter !!!
-var test = ['Grenoble','Lyon','Parie'];
+var test = ['Grenoble','Lyon','Paris'];
 $("#zone_saisie").autocomplete({
-	source : recherches
+	source : recherches,
+	focus : true
 }).keypress(function(event){
 	if(event.keyCode === 13){
 		rechercher_nouvelles();
 	}
 });
-
-
-
-/*
-var test = ['x','y','z'];
-$(function(){
-	var $zone = $("#zone_saisie");
-	$zone.autocomplete({
-		source : test,
-		minLength : 1,
-		response: function(event, ui){
-			$("#zone_saisie").val(ui.content[0].id);
-		},
-		select : function(event, ui){
-			$("#zone_saisie").val(ui.item.id);
-			$(this).closest('form').trigger('submit');
-		}
-	}).keypress(function(event){
-		if(event.keyCode === 13){
-			$(this).closest('form').trigger('submit');
-			alert("yes");
-			rechercher_nouvelles();
-		}
-	});
-})*/
-
-
-// Recherche Quand touche entrée
-//$("#zone_saisie")
