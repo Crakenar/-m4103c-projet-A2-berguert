@@ -153,8 +153,8 @@ $("#zone_saisie").autocomplete( "option", "source", JSON.parse(recherches).Resul
 
 // Recherche Quand touche entrée
 $("#zone_saisie").keypress(function(event){
-	let keycode = (event.keycode ? event.keycode : event.which);
-	if(keycode == '13'){
+	let keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode === 13){
 		rechercher_nouvelles();
 	}
 });
