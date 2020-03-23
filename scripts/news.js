@@ -109,10 +109,11 @@ let text;
 		console.log($(x).text()); // the text of the clicked element
 		text = $(x).text();
 	});
-console.log(text);
 
-
-	//if(localStorage.getItem(text)){}
+//même pas besoin car ça le fait automatiquement...pk ? jsp
+	if(localStorage.getItem(text) !== null){
+		recherche_courante_news = JSON.parse(localStorage.getItem(text));
+	}
 	//console.log(recherche_courante_news);
 	
 
