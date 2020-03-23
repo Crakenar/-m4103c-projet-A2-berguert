@@ -150,7 +150,7 @@ function supprimer_nouvelle(elt) {
 
 //Model et view
 //autocompletion eleve le submit de Enter !!!
-var test = ['x','y','z'];
+var test = ['Grenoble','Lyon','Parie'];
 $("#zone_saisie").autocomplete({
 	source : test
 });
