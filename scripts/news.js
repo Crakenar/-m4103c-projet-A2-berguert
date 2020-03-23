@@ -107,6 +107,7 @@ function rechercher_nouvelles() {
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
 		text = $(x).text(); // the text of the clicked element
+		console.log(text);
 	});
 	console.log(text);
 	
