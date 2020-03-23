@@ -103,9 +103,10 @@ function rechercher_nouvelles() {
 	
 
 
-	let text = $("#recherches-stockees").click(function(event){
+	let text;
+	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
-		return $(x).text(); // the text of the clicked element
+		text = $(x).text(); // the text of the clicked element
 	});
 
 	recherche_courante_news = JSON.parse(localStorage.getItem(text));
