@@ -26,6 +26,7 @@ function ajouter_recherche(){
 		$("#recherches-stockees").prepend('<p class="titre-recherche" ><label onclick=selectionner_recherche(this)>'+donneeEntree+'</label><img src="images/croix30.jpg" class="icone-croix " onclick="supprimer_recherche(this)"/></p>');
 		//sauvegarde dans sessionStorage(plus de place que cookie) pour conserver les recherches deja effectuées
 		localStorage.setItem("recherches",JSON.stringify(recherches));
+		recherche_courante_news = [];
 	}
 	//si clic sur le label => selectionner_recherche(this)
 	//si clic sur croix => supprimer_recherche(this)
@@ -115,7 +116,6 @@ let maRecherche;
 	if(localStorage.getItem(maRecherche) !== null){
 		alert("buien joue");
 		console.log(localStorage.getItem(maRecherche));
-		
 		recherche_courante_news = localStorage.getItem(maRecherche);
 	}else{
 		alert("pas de cookie pour toi")
