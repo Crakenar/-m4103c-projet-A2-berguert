@@ -149,9 +149,12 @@ function supprimer_nouvelle(elt) {
 //Apparement Jquery UI le fait tres bien
 
 //Model et view
-$("#zone_saisie").autocomplete( "option", "source", JSON.parse(recherches).Result).keypress(function(event){
-	let keycode = (event.keyCode ? event.keyCode : event.which);
-	if(keycode === 13){
+$("#zone_saisie").autocomplete({
+	source : JSON.parse(recherches).Result,
+	minLength : 1,
+}).keypress(function(event){
+	if(event.keyCode === 13){
+		alert("yes");
 		rechercher_nouvelles();
 	}
 });
