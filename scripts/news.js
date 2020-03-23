@@ -113,7 +113,7 @@ let maRecherche;
 	});
 	console.log(maRecherche);
 	
-	if(localStorage.getItem(maRecherche) !== null){
+	if(localStorage.getItem(maRecherche)){
 		alert("buien joue");
 		console.log(localStorage.getItem(maRecherche));
 		recherche_courante_news = localStorage.getItem(maRecherche);
