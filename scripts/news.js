@@ -107,6 +107,7 @@ function rechercher_nouvelles() {
 	})
 	));*/
 	$("#recherches-stockees").click(function(e){
+		console.log($(this));
 		console.log($(this).text());
 		console.log(e.tardet.id);
 		
