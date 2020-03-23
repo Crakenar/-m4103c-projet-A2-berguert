@@ -104,14 +104,15 @@ function rechercher_nouvelles() {
 	//recherche_courante_news = JSON.parse(localStorage.getItem());
 	$("#resultats").html("");
 //besoin du clic sur ok ou Entree pour afficher
-let text;
+let maRecherche;
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
 		//console.log($(x).text()); // the text of the clicked element
-		text = $(x).text();
+		maRecherche = $(x).text();
 	});
-
-	if(localStorage.getItem($.parseHTML(text)) !== null){
+	console.log(maRecherche);
+	
+	if(localStorage.getItem(maRecherche) !== null){
 		alert("buien joue");
 		console.log(localStorage.getItem(text));
 		
