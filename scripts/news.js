@@ -108,7 +108,8 @@ function rechercher_nouvelles() {
 		var x = event.target; // event.target has the exact element clicked
 		text = $(x).text(); // the text of the clicked element
 	});
-
+	console.log(text);
+	
 	recherche_courante_news = JSON.parse(localStorage.getItem(text));
 	console.log(recherche_courante_news);
 	
