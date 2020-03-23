@@ -109,6 +109,7 @@ function rechercher_nouvelles() {
 
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
+		//console.log($(x).text()); // the text of the clicked element
 		maRecherche = $(x).text();
 	});
 	
@@ -118,6 +119,9 @@ function rechercher_nouvelles() {
 	}else{
 		//alert("pas de cookie pour toi")
 	}
+
+	
+
 }
 
 
@@ -130,12 +134,10 @@ function maj_resultats(res) {
 	$(res).each(function(index,value){
 		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
 		if(indexOfResultat(recherche_courante_news,res) == -1){
-			console.log("present ! ");			
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
 			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
-		}else{	
-			console.log("pas présent");					
+		}else{
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
 			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
