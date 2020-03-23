@@ -58,6 +58,12 @@ function selectionner_recherche(elt) {
 	//localstorage.getItem => recuperer le "cookie" === nom de la recherche
 	recherche_courante_news = localStorage.getItem($("#zone_saisie").val());
 	console.log(recherche_courante_news);
+	//affichage des recherche sauvegardées dans la zone resultats
+	$(recherche_courante_news).each(function(index,value){
+		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
+		' target="_blank">'+decodeHtmlEntities(value.titre)+
+		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
+	});
 	
 }
 
