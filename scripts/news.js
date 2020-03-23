@@ -112,7 +112,7 @@ let text;
 
 	if(localStorage.getItem(text) !== null){
 		alert("nop");
-		recherche_courante_news = JSON.parse(localStorage.getItem(text));
+		recherche_courante_news = localStorage.getItem(text);
 	}
 	console.log(recherche_courante_news);
 	
