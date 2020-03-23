@@ -127,9 +127,17 @@ function maj_resultats(res) {
 
 	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
 	$(res).each(function(index,value){
-		$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
-		' target="_blank">'+decodeHtmlEntities(value.titre)+
-		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
+		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
+		if(indexOfResultat(recherche_courante_news,obj) != -1){
+			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
+			' target="_blank">'+decodeHtmlEntities(value.titre)+
+			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
+		}else{
+			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
+			' target="_blank">'+decodeHtmlEntities(value.titre)+
+			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
+		}
+	
 	});
 	
 	
