@@ -114,12 +114,12 @@ let maRecherche;
 	
 	if(localStorage.getItem(maRecherche) !== null){
 		alert("buien joue");
-		console.log(localStorage.getItem(text));
+		console.log(localStorage.getItem(maRecherche));
 		
-		recherche_courante_news = localStorage.getItem(text);
+		recherche_courante_news = localStorage.getItem(maRecherche);
 	}else{
 		alert("pas de cookie pour toi")
-		console.log(localStorage.getItem(text));
+		console.log(localStorage.getItem(maRecherche));
 	}
 	console.log(recherche_courante_news);
 	
