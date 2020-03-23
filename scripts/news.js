@@ -118,6 +118,7 @@ let text;
 		recherche_courante_news = localStorage.getItem(text);
 	}else{
 		alert("pas de cookie pour toi")
+		console.log(localStorage.getItem(text));
 	}
 	console.log(recherche_courante_news);
 	
