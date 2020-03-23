@@ -153,7 +153,11 @@ function supprimer_nouvelle(elt) {
 var test = ['Grenoble','Lyon','Parie'];
 $("#zone_saisie").autocomplete({
 	source : test
-});
+}).keypress(function(event){
+	if(event.keyCode === 13){
+		rechercher_nouvelles();
+	}
+})
 
 
 
