@@ -110,11 +110,11 @@ let text;
 		text = $(x).text();
 	});
 
-	if(localStorage.getItem(text) === null){
+	if(localStorage.getItem(text) !== null){
 		alert("nop");
 		recherche_courante_news = JSON.parse(localStorage.getItem(text));
 	}
-	//console.log(recherche_courante_news);
+	console.log(recherche_courante_news);
 	
 
 }
