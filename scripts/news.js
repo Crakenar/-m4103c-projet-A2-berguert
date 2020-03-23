@@ -42,6 +42,8 @@ function supprimer_recherche(elt) {
 	//	localStorage.clear(); == localStorage.removeItem("recherches");
 	//supprimer la recherche du tableau recherches[]
 	const indexSupprimer = recherches.indexOf($(elt).parent().parent().val());
+	console.log(indexSupprimer);
+	
 	recherches.splice(indexSupprimer);
 	//supprimer dans localstorage aussi
 	//localStorage.removeItem(this);
@@ -115,13 +117,11 @@ function rechercher_nouvelles() {
 	
 	if(localStorage.getItem(maRecherche)){
 		//alert("buien joue");
+		//!!!!!!! change le type de recherche_courante_news en string !!!! pas normal
 		recherche_courante_news = localStorage.getItem(maRecherche);
 	}else{
 		//alert("pas de cookie pour toi")
 	}
-
-	
-
 }
 
 
