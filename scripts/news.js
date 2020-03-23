@@ -106,13 +106,12 @@ function rechercher_nouvelles() {
 let text;
 	$("#recherches-stockees").click(function(event){
 		var x = event.target; // event.target has the exact element clicked
-		console.log($(x).text()); // the text of the clicked element
+		//console.log($(x).text()); // the text of the clicked element
 		text = $(x).text();
 	});
 
-//même pas besoin car ça le fait automatiquement...pk ? jsp
-	if(localStorage.getItem(text) !== null){
-		alert("es;");
+	if(localStorage.getItem(text) === null){
+		alert("nop");
 		recherche_courante_news = JSON.parse(localStorage.getItem(text));
 	}
 	//console.log(recherche_courante_news);
