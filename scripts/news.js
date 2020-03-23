@@ -33,20 +33,15 @@ function ajouter_recherche(){
 	recherche_courante_news = [];
 }
 
-let rechercheASupprimer;
+
 function supprimer_recherche(elt) {
 	//supprimer l'element p dans recherches-stockees
 	$(elt).parent().remove();
 
-	$("#recherches-stockees").click(function(event){
-		var x = event.target; // event.target has the exact element clicked
-		//console.log($(x).text()); // the text of the clicked element
-		rechercheASupprimer = $(x);
-	});
+	
 	//	localStorage.clear(); == localStorage.removeItem("recherches");
 	//supprimer la recherche du tableau recherches[]
-	const indexSupprimer = recherches.indexOf($(rechercheASupprimer));
-	console.log(indexSupprimer);
+	const indexSupprimer = recherches.indexOf($(elt).parent().find("label").text());
 	recherches.splice(indexSupprimer);
 	//supprimer dans localstorage aussi
 	//localStorage.removeItem(this);
