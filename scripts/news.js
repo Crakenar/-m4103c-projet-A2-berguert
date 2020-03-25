@@ -193,15 +193,7 @@ $("#zone_saisie").autocomplete({
 
 
 /*
-Autocompleter avec les recherches enregistrées ou juste tapée (bouton ok, entrée)
-Autocomplete fait apparaitre un message en bas alors que j'ai rien fait.
+Autocomplete à partir des recherches de l'utilisateur apres appuyer sur Ok ou Entrée
 
 
-Toujours besoin de faire un clic sur ok pour pouvoir tout faire même apres refresh de la page
-- si l'on veut la correspondance avec les resultats enregistrés
-etc.
-
-
-Entrer lenom Grenoble => sauvegarder la recherche
-Cliquer sur recherche stockées, puis sur ok, enregistrer une nouvelle => error t is null
 */
