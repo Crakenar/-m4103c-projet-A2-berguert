@@ -75,7 +75,8 @@ function init() {
 	}
 	//on remplit la partie recherches-stockées de ces données
 	
-
+ //Supprimer la div de JSUI pour l'autocompletion
+ $(".ui-helper-hidden-accessible").remove();
 }
 
 //model
