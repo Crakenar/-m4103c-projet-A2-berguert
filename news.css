@@ -133,6 +133,11 @@ body
 	border-radius: 10px;
 }
 
+#nbr_nouvelles
+{
+ color: white;
+}
+
 #resultats
 {
 	height:450px;

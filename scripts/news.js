@@ -5,6 +5,8 @@ var recherche_courante;
 // Tableau d'objets de type resultats (avec titre, date et url)
 var recherche_courante_news = [];
 
+//Permet de stocker l'ensemble des recherches de l'utilisateur si clic sur Ok ou appuye sur Entree
+var recherches_Utilisateur = [];
 
 /*1.1 */	
 //si clic sur l'image disk alors ajout chaine au tableau recherches[]
@@ -20,6 +22,7 @@ function ajouter_recherche(){
 		//sauvegarde dans sessionStorage(plus de place que cookie) pour conserver les recherches deja effectuées
 		localStorage.setItem("recherches",JSON.stringify(recherches));
 		recherche_courante_news = [];
+		Les_recherches_Utilisateur(donneeEntree);
 	}
 	//si clic sur le label => selectionner_recherche(this)
 	//si clic sur croix => supprimer_recherche(this)
@@ -57,6 +60,8 @@ function selectionner_recherche(elt) {
 		' target="_blank">'+decodeHtmlEntities(value.titre)+
 		'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
 	});
+
+	localStorage.setItem("recherches_courante_news",JSON.stringify(recherche_courante_news2));
 	
 }
 
@@ -84,7 +89,6 @@ var maRecherche;
 function rechercher_nouvelles() {
 	//faire une requeste get ? !!!pas secure!!! avec les données de recherche_courante ? ou direct avec value ?
 	//on nettoye la zone de resultat pour eviter d'afficher encore et encore
-
 		$("#wait").css("display","block");
 		const data = $("#zone_saisie").val();
 		//.get est asynchrone
@@ -120,12 +124,22 @@ function rechercher_nouvelles() {
 function maj_resultats(res) {
 	$("#wait").css("display","none");
 	//res est un objet de plusieurs offres, on veut toute les afficher dans la case resultat
+	recherche_courante_news = JSON.parse(localStorage.getItem("recherches_courante_news"));
+	//console.log(recherche_courante_news);
 	$(res).each(function(index,value){
-		//pour chaque objet, verifions s'ils sont dans recherche_courante_news 
+	//	console.log(res[index]);
+		if(indexOfResultat(recherche_courante_news,res[index]) == -1){
+			console.log(" Pas Cookie !!!!");	
 			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
 			' target="_blank">'+decodeHtmlEntities(value.titre)+
-			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 
-	
+			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="sauver_nouvelle(this)"><img src="img/horloge15.jpg"/></span></p>'); 	
+		}else{
+			console.log("cookie");
+			$("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(value.url)+
+			' target="_blank">'+decodeHtmlEntities(value.titre)+
+			'</a><span class="date_news">'+decodeHtmlEntities(value.date)+'</span><span class="action_news" onclick="supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
+		}
+
 	});
 	
 	
@@ -171,7 +185,11 @@ function supprimer_nouvelle(elt) {
 
 	}
 }
-
+function Les_recherches_Utilisateur(elt){
+	if(recherches_Utilisateur.includes(elt) == false){
+		recherches_Utilisateur.push(elt);
+	}
+}
 
 
 //Autocompletion
@@ -180,12 +198,17 @@ function supprimer_nouvelle(elt) {
 
 //Model et view
 $("#zone_saisie").autocomplete({
-	source : recherches,
-	focus : true
-}).keypress(function(event){
+	source : recherches_Utilisateur,
+	autoFocus : true,
+	
+}).keyup(function(event){
 	if(event.keyCode === 13){
+		Les_recherches_Utilisateur($("#zone_saisie").val());
 		rechercher_nouvelles();
 	}
+// pour recherche dynamique mais pb => doit ajouter un charactere apres pour afficher bon contenu
+rechercher_nouvelles();
+console.log($("#zone_saisie").val());
 });
 
 
@@ -193,7 +216,14 @@ $("#zone_saisie").autocomplete({
 
 
 /*
-Autocomplete à partir des recherches de l'utilisateur apres appuyer sur Ok ou Entrée
 
+Si une recherche est déja enregistrée alors lors de l'affichage de l'ensemble des nouvelles elles soient marquées
+
+Faire MVC 
+
+
+Enlever les $("#zone_saisie").val() ??? risque de bug si l'on ecrit dans la zone alors qu'on cherche autre chose ?!
+
+Taper une lettre = requete auto pour afficher en temps réel les résultats => bloque
 
 */
