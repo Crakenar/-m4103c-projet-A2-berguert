@@ -43,8 +43,6 @@ controler.supprimer_recherche = function(elt){
 
 
 controler.init = function(){
-
-
 	//console.log(model.recherches_Utilisateur);
 	let obj_json = localStorage.getItem("recherches");
 	let obj = JSON.parse(obj_json);
@@ -72,7 +70,18 @@ controler.init = function(){
 
 var maRecherche;
 controler.rechercher_nouvelles = function(){
-
+	//on récupere la valeur de la zone saisie
+	let valueSaisie = view.getSaisieUtilisateur();
+	//on verifie si elle existe dans les zone stockées donc dans le localstorage
+	let verifSiExisteDeja = JSON.parse(localStorage.getItem(valueSaisie));
+	//si n'existe pas (null)
+	if(verifSiExisteDeja == null){
+		let x = [];
+		localStorage.setItem("recherches_courante_news",JSON.stringify(x));
+	}else{
+		//sinon rien
+	}
+	
 	console.log(model.recherches_Utilisateur);
 	
 	nombreResRechStockees = 0;
@@ -198,10 +207,18 @@ controler.recherche_utilisateurs = function(elt){
 		model.recherches_Utilisateur.push(elt);
 	}
 	localStorage.setItem("Recherches_Utilisateur",JSON.stringify(model.recherches_Utilisateur));
-
+	view.zoneSaisieUtilisateur().autocomplete({source : model.recherches_Utilisateur});
 }
 
-
+controler.ajouteMoiCa = function(){
+	model.recherches_Utilisateur = JSON.parse(localStorage.getItem("Recherches_Utilisateur"));
+	if(model.recherches_Utilisateur == null){
+		model.recherches_Utilisateur = [];
+	}
+	controler.recherche_utilisateurs(view.getSaisieUtilisateur());
+	localStorage.setItem("Recherches_Utilisateur",JSON.stringify(model.recherches_Utilisateur));
+	model.recherches_Utilisateur = JSON.parse(localStorage.getItem("Recherches_Utilisateur"));
+}
 
 $(function(){
 
@@ -212,19 +229,34 @@ if(model.recherches_Utilisateur == null){
 }
 view.zoneSaisieUtilisateur().autocomplete({
 	source : model.recherches_Utilisateur,
-	autoFocus : true,
+	autoFocus : false,
 }).keyup(function(event){
 	if(event.keyCode === 13){
 		controler.recherche_utilisateurs(view.getSaisieUtilisateur());
 		localStorage.setItem("Recherches_Utilisateur",JSON.stringify(model.recherches_Utilisateur));
+		//console.log( model.recherches_Utilisateur);
+		
 		//controler.rechercher_nouvelles();
 	}
 	controler.rechercher_nouvelles();
 })
 view.supprimerAideAutoComplete();
+
+$("#recherches-stockees").sortable({
+	update : function(){
+		model.recherches = [];
+		//console.log("order changed");
+		//on parcourt les elements du DOM pour créer une nouvelle array avec ces nouveaux emplacements
+		$("#recherches-stockees > p").each(function(index,value){
+		//	console.log(value);
+		//	console.log($(this).find("label").text());
+			let x  = $(this).find("label").text();
+			model.recherches.push(x);
+			console.log(model.recherches)
+		})
+		localStorage.setItem("recherches",JSON.stringify(model.recherches));
+		model.recherches = JSON.parse(localStorage.getItem("recherches"));
+	}
+})
 })
 
-
-setInterval(function () {
-	view.zoneSaisieUtilisateur().autocomplete("option", { source:  model.recherches_Utilisateur });
-}, 1000);

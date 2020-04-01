@@ -23,7 +23,13 @@ view.getElementByID = function(elem){
 view.ajouterRechercheStockee = function(donneeEntree,valeur){
 
   $("#recherches-stockees").prepend('<p class="titre-recherche" ><label onclick=controler.selectionner_recherche(this)>'+donneeEntree+'</label><img src="images/croix30.jpg" class="icone-croix " onclick="controler.supprimer_recherche(this)"/><a>'+valeur+'</a></p>');
+
 }
+
+/*view.changerValeurNombreRechercheStockee = function(donneeEntree,valeur){
+  $("#recherches-stockees > p > label").text(donneeEntree);
+  $("#recherches-stockees > p > a").text(valeur);
+}*/
 
 view.affichageRechercheStockees = function(url,titre,date){
   $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
