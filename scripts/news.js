@@ -324,7 +324,11 @@ $("#zone_saisie").autocomplete({
 rechercher_nouvelles();
 });
 
-
+//view
+$(function() {
+	$("#resultats").sortable();
+	
+}); 
 
 
 
