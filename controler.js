@@ -45,13 +45,16 @@ controler.supprimer_recherche = function(elt){
 controler.init = function(){
 	//console.log(model.recherches_Utilisateur);
 	let obj_json = localStorage.getItem("recherches");
-	let obj = JSON.parse(obj_json);
+	model.recherches = JSON.parse(obj_json);
+	console.log(model.recherches);
 	view.suppHTML("recherche-stockees");
-	if(obj != ""){
-		$(obj).each(function(index, value){
-		model.recherches.push(value);
+	if(model.recherches != null){		
+		$().each(model.recherches,function(index, value){
+			//model.recherches.push(value);
 			view.ajouterRechercheStockee(value);
 		});
+	}else{
+		model.recherches = [];
 	}
 	view.supprimerAideAutoComplete();
 	view.sortSearches("resultats");
@@ -252,7 +255,6 @@ $("#recherches-stockees").sortable({
 		//	console.log($(this).find("label").text());
 			let x  = $(this).find("label").text();
 			model.recherches.push(x);
-			console.log(model.recherches)
 		})
 		localStorage.setItem("recherches",JSON.stringify(model.recherches));
 		model.recherches = JSON.parse(localStorage.getItem("recherches"));
