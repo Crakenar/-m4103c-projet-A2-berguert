@@ -103,7 +103,7 @@ controler.rechercher_nouvelles = function(){
 	});
 
 	if(localStorage.getItem(maRecherche)){		
-		//alert("existe en loalsotrage");
+		//alert("existe en localstorage");
 		model.recherche_courante_news = localStorage.getItem("maRecherche");
 	}else{
 		//alert("pas de cookie pour toi")
@@ -114,9 +114,14 @@ controler.rechercher_nouvelles = function(){
 
 
 controler.maj_resultats = function(res){
+	resSorted = res.sort(function(n1,n2){
+		return new Date(n1.date) - new Date(n2.date)
+	});
+
+
 	view.afficherImageAttenteReponseServeur("none");
 	model.recherche_courante_news = JSON.parse(localStorage.getItem("recherches_courante_news"));
-	$(res).each(function(index,value){
+	$(resSorted).each(function(index,value){
 		if(model.recherche_courante_news == null){
 			view.affichageResultatsRecherche(value.url,value.titre,value.date,fonctionSauver,imageHorloge);
 		}else{
@@ -244,6 +249,7 @@ view.zoneSaisieUtilisateur().autocomplete({
 	controler.rechercher_nouvelles();
 })
 view.supprimerAideAutoComplete();
+});
 
 $("#recherches-stockees").sortable({
 	update : function(){
@@ -257,8 +263,16 @@ $("#recherches-stockees").sortable({
 			model.recherches.push(x);
 		})
 		localStorage.setItem("recherches",JSON.stringify(model.recherches));
-		model.recherches = JSON.parse(localStorage.getItem("recherches"));
+	//	model.recherches = JSON.parse(localStorage.getItem("recherches"));
 	}
 })
-})
+
+//filter
+
+controler.TrierParDate = function(){
+	controler.rechercher_nouvelles();
+	$("#resultats").sort(function (n1,n2){
+		return new Date(n2.date) - new Date(n1.date)
+	});
+}
 

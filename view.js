@@ -22,7 +22,7 @@ view.getElementByID = function(elem){
 
 view.ajouterRechercheStockee = function(donneeEntree,valeur){
 
-  $("#recherches-stockees").prepend('<p class="titre-recherche" ><label onclick=controler.selectionner_recherche(this)>'+donneeEntree+'</label><img src="images/croix30.jpg" class="icone-croix " onclick="controler.supprimer_recherche(this)"/><a>'+valeur+'</a></p>');
+  $("#recherches-stockees").append('<p class="titre-recherche" ><label onclick=controler.selectionner_recherche(this)>'+donneeEntree+'</label><img src="img/croix30.jpg" class="icone-croix " onclick="controler.supprimer_recherche(this)"/><a>'+valeur+'</a></p>');
 
 }
 
@@ -34,7 +34,7 @@ view.ajouterRechercheStockee = function(donneeEntree,valeur){
 view.affichageRechercheStockees = function(url,titre,date){
   $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
   ' target="_blank">'+decodeHtmlEntities(titre)+
-  '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news" onclick="controler.supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
+  '</a><span class="date_news">'+formatDate(decodeHtmlEntities(date))+'</span><span class="action_news" onclick="controler.supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
 }
 
 ///////////////////////////
@@ -85,7 +85,7 @@ view.resetElementValue = function(id){
 view.affichageResultatsRecherche = function(url, titre, date,fonction,url_image){
   $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
   ' target="_blank">'+decodeHtmlEntities(titre)+
-  '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news"  onclick="'+fonction+'"><img src="'+url_image+'"/></span></p>');
+  '</a><span class="date_news">'+formatDate(decodeHtmlEntities(date))+'</span><span class="action_news"  onclick="'+fonction+'"><img src="'+url_image+'"/></span></p>');
 }
 
 
