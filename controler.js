@@ -43,6 +43,9 @@ controler.supprimer_recherche = function(elt){
 
 
 controler.init = function(){
+
+
+	//console.log(model.recherches_Utilisateur);
 	let obj_json = localStorage.getItem("recherches");
 	let obj = JSON.parse(obj_json);
 	view.suppHTML("recherche-stockees");
@@ -63,19 +66,19 @@ controler.init = function(){
 		if(x != null){
 			nbr_recherches = x.length;
 		}
-		
-		console.log(value);
-		console.log(nbr_recherches);
 		view.ajouterRechercheStockee(value,nbr_recherches);
 	})
 }
 
 var maRecherche;
 controler.rechercher_nouvelles = function(){
+
+	console.log(model.recherches_Utilisateur);
+	
 	nombreResRechStockees = 0;
 	let saisieUtilisateur = view.getSaisieUtilisateur();
 	
-	model.recherches_Utilisateur.push(saisieUtilisateur);
+	//model.recherches_Utilisateur.push(saisieUtilisateur);
 	view.afficherImageAttenteReponseServeur("block");
  	$.get("https://carl-vincent.fr/search-internships.php?data="+saisieUtilisateur,controler.maj_resultats);
 	view.resetElementHTML("resultats");
@@ -182,23 +185,46 @@ controler.supprimer_nouvelle = function(elt){
 	}
 }
 
-/*
-
-
 
 
 controler.recherche_utilisateurs = function(elt){
-	let recherches_Utilisateur = model.getRechercheUtilisateur();
-	model.ViderTableau(recherches_Utilisateur);
-	recherches_Utilisateur = model.getLocalStorageItems("Recherches_Utilisateur");
-	if(recherches_Utilisateur == null){
-		recherches_Utilisateur.push(elt);
-	}else if(recherches_Utilisateur.includes(elt) == false){
-		recherches_Utilisateur.push(elt);
+	model.recherches_Utilisateur = [];
+	model.recherches_Utilisateur = JSON.parse(localStorage.getItem("Recherches_Utilisateur"));
+	//console.log(model.recherches_Utilisateur);
+	if(model.recherches_Utilisateur == null){
+		model.recherches_Utilisateur = [];
+		model.recherches_Utilisateur.push(elt);
+	}else if (model.recherches_Utilisateur.includes(elt) == false ){
+		model.recherches_Utilisateur.push(elt);
 	}
-	model.setRechercheUtilisateur(recherches_Utilisateur);
+	localStorage.setItem("Recherches_Utilisateur",JSON.stringify(model.recherches_Utilisateur));
+
 }
 
 
 
-*/
+$(function(){
+
+	//Autocompletion
+model.recherches_Utilisateur = JSON.parse(localStorage.getItem("Recherches_Utilisateur"));
+if(model.recherches_Utilisateur == null){
+	model.recherches_Utilisateur = [];
+}
+view.zoneSaisieUtilisateur().autocomplete({
+	source : model.recherches_Utilisateur,
+	autoFocus : true,
+}).keyup(function(event){
+	if(event.keyCode === 13){
+		controler.recherche_utilisateurs(view.getSaisieUtilisateur());
+		localStorage.setItem("Recherches_Utilisateur",JSON.stringify(model.recherches_Utilisateur));
+		//controler.rechercher_nouvelles();
+	}
+	controler.rechercher_nouvelles();
+})
+view.supprimerAideAutoComplete();
+})
+
+
+setInterval(function () {
+	view.zoneSaisieUtilisateur().autocomplete("option", { source:  model.recherches_Utilisateur });
+}, 1000);

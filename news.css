@@ -171,3 +171,10 @@ input[type="text"]
 	height: 200px;
 	margin-bottom: 5px;
 }
+
+.ui-menu{
+	color: white;
+	background-color: grey;
+	width: 5px;
+	list-style:none
+}

@@ -4,6 +4,9 @@ let view = {};
 //////////////////////
 //Getter Simples
 //////////////////////
+view.zoneSaisieUtilisateur = function(){
+  return $("#zone_saisie");
+}
 
 view.getSaisieUtilisateur = function(){
   return  $("#zone_saisie").val();
