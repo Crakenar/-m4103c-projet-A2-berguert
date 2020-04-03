@@ -2,7 +2,14 @@ let view = {};
 
 
 //////////////////////
-//Getter Simples
+//Getter Simples on n'en fait pas pour chaque elements du DOM pour pouvoir factoriser les fonctions
+//on pourrait sinon faire des fonction du style : 
+/*
+view.getIDResultat = function(){
+  return  $("#resultats");
+}
+.....
+*/
 //////////////////////
 view.zoneSaisieUtilisateur = function(){
   return $("#zone_saisie");
@@ -34,7 +41,7 @@ view.ajouterRechercheStockee = function(donneeEntree,valeur){
 view.affichageRechercheStockees = function(url,titre,date){
   $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
   ' target="_blank">'+decodeHtmlEntities(titre)+
-  '</a><span class="date_news">'+formatDate(decodeHtmlEntities(date))+'</span><span class="action_news" onclick="controler.supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
+  '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news" onclick="controler.supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
 }
 
 ///////////////////////////
@@ -44,9 +51,15 @@ view.suppHTMLParent = function(elt){
   $(elt).parent().remove();
 }
 
+
 view.suppJSPPK = function(elt){
   return $(elt).parent().find("label").text()
 }
+
+view.thisFindText = function(elt,div){
+  return $(elt).find(div).text(); 
+}
+
 view.suppHTML = function(balise){
   $('#'+balise).remove();
 }
@@ -64,7 +77,9 @@ view.afficherImageAttenteReponseServeur = function(option){
   $("#wait").css("display",option);
 }
 
-//reset de l'affichage de id sinon ça s'additionne
+//////////////////////////
+//RESET DES AFFICHAGES
+/////////////////////////
 view.setValueHTMLElement = function(id,e){
   $("#"+id).val(e.innerText); 
 }
@@ -77,6 +92,9 @@ view.resetElementValue = function(id){
   $("#"+id).val("");
 }
 
+view.resetByClass = function(classe){
+  $('.'+classe).remove();
+}
 
 ///////////////////////////
 //maj_resultats(res) fonction callback affichage element requetes
@@ -85,7 +103,7 @@ view.resetElementValue = function(id){
 view.affichageResultatsRecherche = function(url, titre, date,fonction,url_image){
   $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
   ' target="_blank">'+decodeHtmlEntities(titre)+
-  '</a><span class="date_news">'+formatDate(decodeHtmlEntities(date))+'</span><span class="action_news"  onclick="'+fonction+'"><img src="'+url_image+'"/></span></p>');
+  '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news"  onclick="'+fonction+'"><img src="'+url_image+'"/></span></p>');
 }
 
 
@@ -114,7 +132,6 @@ view.findUrlNouvelle = function(x){
   return $(x).parent().find("a").attr('href');
 }
 
-//strings
 view.addAttribut = function(attr,fonction){
   $(elt).attr(attr,fonction);
 }

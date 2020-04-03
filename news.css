@@ -172,9 +172,49 @@ input[type="text"]
 	margin-bottom: 5px;
 }
 
+
+/*MON CSS ///////////////////////// */
 .ui-menu{
 	color: white;
 	background-color: grey;
 	width: 5px;
 	list-style:none
+}
+
+#gif1{
+	width: 150px;
+	height: 80px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+#gif2{
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+#gif3{
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	top: 200px;
+	right: 20px;
+}
+
+#gif4{
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	top: 400px;
+	right: 20px;
+}
+
+#textDefile{
+	width: 200px;
+	position: absolute;
+	top: 100px;
+	left: 20px;
 }
