@@ -8,7 +8,7 @@ let model ={};
 
 
   ////////////////////////
-  //Creation objet (nouvelles)
+  //Creation objet (nouvelles) => pour save avec json
   ///////////////////////
   model.createObjetNouvelle = function(titre,date,url){
     let objet = {
@@ -22,13 +22,13 @@ let model ={};
 
 
 
-  ///////
+  //////////////
   //Reset Des Tableaux
   ///////////////////
   
-  model.resetRecherches = function(){
-    model.recherches = [];
-  }
+model.resetRecherches = function(){
+  model.recherches = [];
+}
 
 model.resetRecherche_Courante_News = function(){
   model.recherche_courante_news = [];

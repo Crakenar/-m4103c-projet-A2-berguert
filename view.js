@@ -23,9 +23,39 @@ view.getElementByID = function(elem){
   return $("#"+elem);
 }
 
+
+/////////A factoriser (mais comme dirait shiffman : ill refrator that later)////////////////////////
+view.suppJSPPK = function(elt){
+  return $(elt).parent().find("label").text()
+}
+
+view.findTitreNouvelle = function(x){
+  return $(x).parent().find("a").text()
+}
+
+view.findDateNouvelle = function(x){
+  return $(x).parent().find(".date_news").text();
+}
+
+view.findUrlNouvelle = function(x){
+  return $(x).parent().find("a").attr('href');
+}
 ////////////////////////
-//ajouter_recherche()
-////////////////////////
+
+view.thisFindText = function(elt,div){
+  return $(elt).find(div).text(); 
+}
+
+
+
+
+
+
+/*////////////////////////////
+    AFFICHAGE ELEMENTS 
+    CHANGEMENT ELEMENTS 
+    dans le html
+////////////////////////////*/
 
 view.ajouterRechercheStockee = function(donneeEntree,valeur){
 
@@ -33,10 +63,6 @@ view.ajouterRechercheStockee = function(donneeEntree,valeur){
 
 }
 
-/*view.changerValeurNombreRechercheStockee = function(donneeEntree,valeur){
-  $("#recherches-stockees > p > label").text(donneeEntree);
-  $("#recherches-stockees > p > a").text(valeur);
-}*/
 
 view.affichageRechercheStockees = function(url,titre,date){
   $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
@@ -44,38 +70,40 @@ view.affichageRechercheStockees = function(url,titre,date){
   '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news" onclick="controler.supprimer_nouvelle(this)"><img src="img/disk15.jpg"/></span></p>'); 
 }
 
-///////////////////////////
-//supprimer_recherche()
-///////////////////////////
-view.suppHTMLParent = function(elt){
-  $(elt).parent().remove();
+
+view.affichageResultatsRecherche = function(url, titre, date,fonction,url_image){
+  $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
+  ' target="_blank">'+decodeHtmlEntities(titre)+
+  '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news"  onclick="'+fonction+'"><img src="'+url_image+'"/></span></p>');
 }
 
 
-view.suppJSPPK = function(elt){
-  return $(elt).parent().find("label").text()
-}
-
-view.thisFindText = function(elt,div){
-  return $(elt).find(div).text(); 
-}
-
-view.suppHTML = function(balise){
-  $('#'+balise).remove();
-}
-
-//Init
-view.supprimerAideAutoComplete = function(){
-  $(".ui-helper-hidden-accessible").remove();
-}
-
-/////////////////////////
-//rechercher_nouvelles
-/////////////////////////
 view.afficherImageAttenteReponseServeur = function(option){
   //block or none
   $("#wait").css("display",option);
 }
+
+
+view.ChangerImageHTML = function(elt,image){
+  $(elt).html('<img src ='+image+' />');
+}
+
+//affichage de la disquette si clic sur ok 
+let affichageDiskette = true;
+view.affichageEnregistrementNouvelleRecherche = function(){
+  if(affichageDiskette){
+		$("#nouvelle-recherche").append('<img id="disk" class="icone-disk" src="img/disk30.jpg" onclick="controler.ajouter_recherche()" />');
+	}
+	affichageDiskette = false;
+}
+
+
+
+view.afficherNombreResultatParNouvelleRecherche = function(id,nombre){
+	$("#"+id).html("");
+	$("#"+id).text("Résultats : " + nombre);
+}
+
 
 //////////////////////////
 //RESET DES AFFICHAGES
@@ -96,41 +124,31 @@ view.resetByClass = function(classe){
   $('.'+classe).remove();
 }
 
-///////////////////////////
-//maj_resultats(res) fonction callback affichage element requetes
-//////////////////////////
+view.suppHTMLParent = function(elt){
+  $(elt).parent().remove();
+}
 
-view.affichageResultatsRecherche = function(url, titre, date,fonction,url_image){
-  $("#resultats").append('<p class="titre_result"><a class="titre_news" href='+decodeHtmlEntities(url)+
-  ' target="_blank">'+decodeHtmlEntities(titre)+
-  '</a><span class="date_news">'+decodeHtmlEntities(date)+'</span><span class="action_news"  onclick="'+fonction+'"><img src="'+url_image+'"/></span></p>');
+view.suppHTML = function(balise){
+  $('#'+balise).remove();
+}
+
+//Init
+view.supprimerAideAutoComplete = function(){
+  $(".ui-helper-hidden-accessible").remove();
 }
 
 
 ////////////////////////////
-//Sauver_nouvelle(elt) ___ Supprimer_nouvelle(elt)
+//CHANGEMENT ATTRIBUTS
 ////////////////////////////
 
-view.ChangerImageHTML = function(elt,image){
-  $(elt).html('<img src ='+image+' />');
-}
+
 
 view.ChangerAttribut = function(elt,attr,fonction){
   $(elt).attr(attr,fonction);
 }
 
-view.findTitreNouvelle = function(x){
-  return $(x).parent().find("a").text()
-}
 
-
-view.findDateNouvelle = function(x){
-  return $(x).parent().find(".date_news").text();
-}
-
-view.findUrlNouvelle = function(x){
-  return $(x).parent().find("a").attr('href');
-}
 
 view.addAttribut = function(attr,fonction){
   $(elt).attr(attr,fonction);
@@ -141,22 +159,7 @@ view.changeImage = function(url_image){
 }
 
 
-//affichage de la disquette si clic sur ok 
-let affichageDiskette = true;
-view.affichageEnregistrementNouvelleRecherche = function(){
-  if(affichageDiskette){
-		$("#nouvelle-recherche").append('<img id="disk" class="icone-disk" src="img/disk30.jpg" onclick="controler.ajouter_recherche()" />');
-	}
-	affichageDiskette = false;
-}
-
-
-
-view.afficherNombreResultatParNouvelleRecherche = function(id,nombre){
-	$("#"+id).html("");
-	$("#"+id).text("Résultats : " + nombre);
-}
-
+////ADD FONCTION X aux elements html
 view.sortSearches = function(id){
   $("#"+id).sortable();
 }
